@@ -1,4 +1,4 @@
-// your code here which is called when submit button clicked 
+
 function getRepositories() {
   const username= document.getElementById('username').value;
   const req = new XMLHttpRequest();
@@ -6,20 +6,20 @@ function getRepositories() {
   req.open('GET', `https://api.github.com/users/${username}/repos`);
   req.send();
 }
-
+//  when submit button clicked  should create the links also but it doesnt  work on that 
 function displayRepositories() {
   let repos =JSON.parse(this.responseText)
-  const passdata = `<ul>${repos
+  const passdata = '<ul>' +repos
     .map(
       r =>
-      /// the out put is wrong
+      /// the out put is wrong  i want to inter plotae correctly 
       // owner  user r.owner.login
       '<li>' +
-        r.name +
-        ' - <a href= "' + r.html_url + '  " data-repository="' + r.name + 
+        `${r.name}` +
+        ' - <a href= "' + `${r.html_url}` + '  " data-repository="' + `${r.name}` + 
         '"onclick="getCommits(this)">Get Commits</a></li>'
     )
-    .join('')}</ul>`;
+    .join('')+'</ul>';
   document.getElementById('repositories').innerHTML = passdata;
 }
 
